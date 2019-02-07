@@ -98,7 +98,7 @@ class Card extends Component {
         });
       })
       .catch(error => {
-        console.log("error");
+        console.log("API not working, fallback on rates.json");
         this.setState({
           error,
           isLoading: false,
