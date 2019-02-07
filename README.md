@@ -19,6 +19,7 @@ See a live version running this template - https://alexdisdier.github.io/currenc
 ## 🚧 Version 2
 
 - Use a currency api instead of a static rates.json file
+- A mobile version
 
 ## Directory Structure
 
