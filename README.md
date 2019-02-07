@@ -1,5 +1,3 @@
-[![version (scoped)](https://img.shields.io/badge/version-1-blue.svg)](https://github.com/alexdisdier/react-add-on)
-
 # Synopsis
 
 This is a Currency Converter Web Application built with React.
@@ -15,11 +13,7 @@ See a live version running this template - https://alexdisdier.github.io/currenc
 - Simultaneously converts any currency available in the dropdown.
 - Validation message in case the user enters a non number character.
 - Round up to the 3 decimals.
-
-## 🚧 Version 2
-
-- Use a currency api instead of a static rates.json file
-- A mobile version
+- Use of a Currency Rates API called (data.fixer)[http://data.fixer.io]
 
 ## Directory Structure
 

@@ -1,22 +1,27 @@
 import React, { Component } from "react";
 
 import Validation from "../Validation/Validation";
-import Rates from "../assets/resources/rates.json";
 import Flags from "../assets/resources/flags.json";
+
+const KEY = "6ffa9c9b83cee2b7940de5be46d7d94b";
+const API = `http://data.fixer.io/api/latest?access_key=${KEY}&format=1`;
 
 class Card extends Component {
   state = {
+    Rates: [],
     amountTop: "",
     amountBottom: "",
     from: "EUR",
     to: "USD",
-    isValid: true
+    isValid: true,
+    isLoading: false
   };
 
   isDecimal = n => n - Math.floor(n) !== 0;
 
   renderCurrenciesOptions = () => {
     // https://zellwk.com/blog/looping-through-js-objects/
+    const Rates = this.state.Rates;
     const options = [];
     const keys = Object.keys(Rates);
 
@@ -38,10 +43,41 @@ class Card extends Component {
     return true;
   };
 
+  componentDidMount() {
+    this.setState({ isLoading: true });
+
+    fetch(API)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Something went wrong ...");
+        }
+      })
+      .then(data => {
+        const Rates = data.rates;
+        const ref = ["USD", "HKD", "EUR", "GBP", "INR", "AUD", "CAD"];
+        const main = {};
+        const temp = {};
+        for (let key in Rates) {
+          if (ref.includes(key)) {
+            main[key] = main[key] = Rates[key];
+          } else {
+            temp[key] = Rates[key];
+          }
+        }
+        main["-------"] = "";
+        this.setState({
+          Rates: { ...main, ...temp }
+        });
+      })
+      .catch(error => this.setState({ error, isLoading: false }));
+  }
+
   handleChange = event => {
     const name = event.target.name;
     let value = event.target.value;
-
+    const Rates = this.state.Rates;
     const update = {};
     update[name] = value;
 
@@ -139,8 +175,8 @@ class Card extends Component {
                 }}
                 id="amountBottom"
                 placeholder={(
-                  (1 / Rates[this.state.from]) *
-                  Rates[this.state.to]
+                  (1 / this.state.Rates[this.state.from]) *
+                  this.state.Rates[this.state.to]
                 ).toFixed(3)}
                 type="text"
                 name="amountBottom"
