@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Validation from "../Validation/Validation";
 import Flags from "../assets/resources/flags.json";
+import Rates from "../assets/resources/rates.json";
 
 const KEY = "6ffa9c9b83cee2b7940de5be46d7d94b";
 const API = `http://data.fixer.io/api/latest?access_key=${KEY}&format=1`;
@@ -43,9 +44,34 @@ class Card extends Component {
     return true;
   };
 
+  // https://gomakethings.com/getting-html-asynchronously-from-another-page/
+  /**
+   * Get HTML asynchronously
+   * @param  {String}   url      The URL to get HTML from
+   * @param  {Function} callback A callback funtion. Pass in "response" variable to use returned HTML.
+   */
+  getHTML = (url, callback) => {
+    // Feature detection
+    if (!window.XMLHttpRequest) return;
+
+    // Create new request
+    var xhr = new XMLHttpRequest();
+
+    // Setup callback
+    xhr.onload = function() {
+      if (callback && typeof callback === "function") {
+        callback(this.responseXML);
+      }
+    };
+
+    // Get the HTML and Bypass CORS (source: https://medium.com/netscape/hacking-it-out-when-cors-wont-let-you-be-great-35f6206cc646)
+    xhr.open("GET", "https://cors-escape.herokuapp.com/" + url);
+    xhr.responseType = "document";
+    xhr.send();
+  };
+
   componentDidMount() {
     this.setState({ isLoading: true });
-
     fetch(API)
       .then(response => {
         if (response.ok) {
@@ -71,7 +97,14 @@ class Card extends Component {
           Rates: { ...main, ...temp }
         });
       })
-      .catch(error => this.setState({ error, isLoading: false }));
+      .catch(error => {
+        console.log("error");
+        this.setState({
+          error,
+          isLoading: false,
+          Rates: { ...Rates }
+        });
+      });
   }
 
   handleChange = event => {
@@ -136,6 +169,7 @@ class Card extends Component {
   };
 
   render() {
+    const Rates = this.state.Rates;
     return (
       <div className="card">
         <div className="form">
@@ -175,8 +209,8 @@ class Card extends Component {
                 }}
                 id="amountBottom"
                 placeholder={(
-                  (1 / this.state.Rates[this.state.from]) *
-                  this.state.Rates[this.state.to]
+                  (1 / Rates[this.state.from]) *
+                  Rates[this.state.to]
                 ).toFixed(3)}
                 type="text"
                 name="amountBottom"
