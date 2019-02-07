@@ -1,20 +1,22 @@
+[![version (scoped)](https://img.shields.io/badge/version-1-blue.svg)](https://github.com/alexdisdier/react-add-on)
+
 # Synopsis
 
 This is a Currency Converter Web Application built with React.
 
-![screenshot of the Currency Converter Web App](/src/screenshot.jpg?raw=true "screenshot of the Currency Converter Web App")
+![screenshot of the Currency Converter Web App](/screenshot.jpg?raw=true "screenshot of the Currency Converter Web App")
 
 ## Usage example
 
 See a live version running this template - https://alexdisdier.github.io/currency-converter/
 
-## Functionalities ✅
+## Functionalities
 
 - Simultaneously converts any currency available in the dropdown.
 - Validation message in case the user enters a non number character.
 - Round up to the 3 decimals.
 
-## Version 2 🚧
+## 🚧 Version 2
 
 - Use a currency api instead of a static rates.json file
 
@@ -86,7 +88,6 @@ npm run build
 ## Acknowledgments
 
 - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 - This was developped white attending a FullStack Developer Bootcamp [@Le Reacteur](https://www.lereacteur.io)
-
 - Deploy React to github pages [codeburst](https://codeburst.io/deploy-react-to-github-pages-to-create-an-amazing-website-42d8b09cd4d)
+- [shields badges](https://shields.io/#/)
