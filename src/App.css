@@ -13,7 +13,7 @@ body {
     #0081b4,
     #309fc1
   );
-  height: 100vh;
+  min-height: 100vh;
   font-family: "Noto Sans KR", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
