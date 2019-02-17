@@ -6,14 +6,19 @@ This is a Currency Converter Web Application built with React.
 
 ## Usage example
 
-See a live version running this template - https://alexdisdier.github.io/currency-converter/
+See demo - https://alexdisdier.github.io/currency-converter/
 
-## Functionalities
+## ✅ Functionalities
 
 - Simultaneously converts any currency available in the dropdown.
 - Validation message in case the user enters a non number character.
 - Round up to the 3 decimals.
 - Use of a Currency Rates API called (data.fixer)[http://data.fixer.io]
+
+## 🚧 Functionalities
+
+- Use Heroku to bypass http and making the api accessible.
+- Make it more mobile friendly and turn it into a web app.
 
 ## Directory Structure
 
@@ -34,8 +39,6 @@ currency-converter
 │   │   ├── Menu
 │   │   └── Title
 │   ├── Validation
-│   │   ├── Validation.css
-│   │   └── Validation
 │   ├── App.css
 │   ├── App.js
 │   ├── App.test.js
@@ -83,6 +86,5 @@ npm run build
 ## Acknowledgments
 
 - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-- This was developped white attending a FullStack Developer Bootcamp [@Le Reacteur](https://www.lereacteur.io)
 - Deploy React to github pages [codeburst](https://codeburst.io/deploy-react-to-github-pages-to-create-an-amazing-website-42d8b09cd4d)
-- [shields badges](https://shields.io/#/)
+- Based on (XE currency design[https://www.xe.com/currencyconverter/]).
