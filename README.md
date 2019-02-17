@@ -13,7 +13,7 @@ See demo - https://alexdisdier.github.io/currency-converter/
 - Simultaneously converts any currency available in the dropdown.
 - Validation message in case the user enters a non number character.
 - Round up to the 3 decimals.
-- Use of a Currency Rates API called []data.fixer](http://data.fixer.io)
+- Use of a Currency Rates API called [data.fixer](http://data.fixer.io)
 
 ## 🚧 Functionalities
 
