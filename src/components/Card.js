@@ -4,7 +4,7 @@ import Validation from "../Validation/Validation";
 import Flags from "../assets/resources/flags.json";
 import Rates from "../assets/resources/rates.json";
 
-const KEY = "6ffa9c9b83cee2b7940de5be46d7d94b";
+const KEY = process.env.API_KEY;
 const API = `http://data.fixer.io/api/latest?access_key=${KEY}&format=1`;
 
 class Card extends Component {
